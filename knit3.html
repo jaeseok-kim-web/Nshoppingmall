@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>project</title>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var sw = false;
+				// 클릭했을때 들어가고 나오는 것을 하기 위해 변수 선언
+				$('#image').click(function() {
+					if(sw == false) {
+						$(this).next().animate({
+							left : 2200
+						}, 1000);
+						sw = true;
+					} else {
+						$(this).next().animate({
+							left : -2000
+						}, 1000);
+						sw = false;
+					}
+				});
+			});
+			function buy() {
+				var obj = document.select;
+
+				if(obj.color.selectedIndex == 0) {
+					alert("color를 선택하세요.");
+					obj.color.focus();
+					return false;
+				}
+				if(obj.size.selectedIndex == 0) {
+					alert("size를 선택하세요.");
+					obj.size.focus();
+					return false;
+				}
+
+				alert("주문이 완료되었습니다.");
+			}
+
+
+			jQuery(document).ready(function() {
+				$('.qtyplus').click(function(e) {
+					e.preventDefault();
+					fieldName = $(this).attr('field');
+					var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+					if(!isNaN(currentVal)) {
+						$('input[name=' + fieldName + ']').val(currentVal + 1);
+					} else {
+						$('input[name=' + fieldName + ']').val(0);
+					}
+				});
+
+				$(".qtyminus").click(function(e) {
+					e.preventDefault();
+					fieldName = $(this).attr('field');
+					var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+
+					if(!isNaN(currentVal) && currentVal > 1) {
+						$('input[name=' + fieldName + ']').val(currentVal - 1);
+					} else {
+						$('input[name=' + fieldName + ']').val(0);
+					}
+				});
+			});
+
+		</script>
+		<style>
+			#wrapper {
+				width: 100%;
+				height: 1300px;
+				margin: 0 auto;
+			}
+			#header {
+				top: 10px;
+				width: 250px;
+				height: 700px;
+				background-color: #fff;
+				position: fixed;
+				margin: 0 auto;
+			}
+			#nav {
+				width: 110px;
+				position: fixed;
+				top: 500px;
+				margin: 0 70px;
+				z-index: 1;
+			}
+			#nav #image {
+				top: 400px;
+				margin: 10px auto;
+				background-repeat: no-repeat;
+				background-position: center;
+				cursor: pointer;
+			}
+			#logo img {
+				max-width: 300px;
+				height: auto;
+				margin: 35px;
+				cursor: pointer;
+			}
+			#menu {
+				margin-top: -130px;
+				height: 200px;
+				position: absolute;
+				left: 10%;
+				z-index: 10;
+			}
+			.main {
+				position: absolute;
+				z-index: 1;
+				left: -2000px;
+				width: 1300px;
+				height: 200px;
+				opacity: 0.8;
+				background: #fff;
+			}
+			#menu .main > li {
+				list-style: none;
+				display: inline-block;
+				width: 200px;
+				height: 100px;
+				position: relative;
+				padding: 0 10px;
+				left: 100px;
+				text-align: center;
+				z-index: 3;
+				font-size: 20px;
+			}
+			#menu .main > li a {
+				font-style: #000000;
+			}
+			#menu #submenu > li {
+				list-style: none;
+			}
+			#menu .main > li:hover #submenu {
+				z-index: 20;
+				display: block;
+			}
+			#menu .main > li a {
+				display: block;
+				left: 0;
+				color: #000;
+			}
+			#menu .main > li a:hover {
+				background: #138535;
+				color: #fff;
+			}
+			#menu .main #submenu {
+				position: absolute;
+				top: 30px;
+				width: 120px;
+				display: none;
+				padding-right: 30px;
+			}
+			#submenu li {
+				list-style: none;
+			}
+			#content {
+				width: 70%;
+				height: 700px;
+				position: relative;
+				left: 400px;
+				display: flex;
+			}
+			#content #main-image {
+				width: 800px;
+				display: block;
+				position: absolute;
+				height: 800px;
+			}
+			#content #cloth-image {
+				width: 200px;
+				height: 700px;
+				flex: 1;
+			}
+			#content #cloth-text {
+				width: 200px;
+				height: 700px;
+				flex: 1;
+				margin: 10px;
+			}
+			#content .selectbox {
+				position: relative;
+				width: 200px;
+				z-index: 1;
+			}
+			.image-main {
+				margin-top: 100px;
+			}
+			.image-main img {
+				margin-left: 400px;
+				margin-top: 100px;
+			}
+			#myform {
+				text-align: center;
+				padding: 5px;
+				display: inline;
+			}
+			.qty {
+				width: 40px;
+				height: 25px;
+				text-align: center;
+			}
+			input.qtyplus {
+				width: 25px;
+				height: 25px;
+			}
+			input.qtyminus {
+				width: 25px;
+				height: 25px;
+			}
+			.buy {
+				margin: 10px auto;
+				width: 100px;
+				height: 50px;
+				background-color: #fff;
+				color: #000;
+			}
+			.buy:hover {
+				background-color: #000;
+				color: #fff;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<div id="logo">
+					<a href="index.html"><img src="image/jaeseok logo.jpg" alt="main로고"/></a>
+				</div>
+			</div>
+			<div id="nav">
+				<img id="image" src="image/menu.jpg" />
+				<div id="menu">
+					<ul class="main">
+						<li id="clothing mainmenu">
+							<a href="#">CLOTHING</a>
+							<ul id="submenu">
+								<li>
+									<a href="new.html">NEW ARRIVAL</a>
+								</li>
+								<li>
+									<a href="outer.html">OUTER</a>
+								</li>
+								<li>
+									<a href="knit.html">KNIT</a>
+								</li>
+								<li>
+									<a href="shirt.html">SHIRT</a>
+								</li>
+								<li>
+									<a href="top.html">TOP</a>
+								</li>
+								<li>
+									<a href="bottom.html">BOTTOM</a>
+								</li>
+							</ul>
+						</li>
+						<li id="lookbook mainmenu">
+							<a href="#">LOOKBOOK</a>
+							<ul id="submenu">
+								<li>
+									<a href="dailylook19FW.html">FW 19</a>
+								</li>
+								<li>
+									<a href="dailylook20SS.html">SS 20</a>
+								</li>
+							</ul>
+						</li>
+						<li id="mypage mainmenu">
+							<a href="mypage.html">MY PAGE</a>
+						</li>
+						<li id="submenu mainmenu">
+							<a href="login.html">LOGIN</a>
+							<ul id="submenu">
+								<li>
+									<a href="join.html">JOIN</a>
+								</li>
+							</ul>
+						</li>
+						<li id="community mainmenu">
+							<a href="community.html">COMMUNITY</a>
+							<ul id="submenu">
+								<li>
+									<a href="notice.html">notice</a>
+								</li>
+								<li>
+									<a href="faq.html">FAQ</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<img id="cloth-image" src="image/knit3-1.jpg" >
+				<div id="cloth-text">
+					<h1>MM ROUND NECK LINEN LIGHT
+					<br/>
+					<br/>
+					KNIT(9C)</h1>
+					<p>
+						31,000원
+					</p>
+					<p>
+						린넨 원단으로 제작된 라이트 미니멀 라운드넥 니트입니다.
+						<br/>
+						<br/>
+						가벼운 원단감으로 단품으로 가볍게 입어도 좋고
+						<br/>
+						<br/>
+						이너로 매치해도 좋은 베이직 니트입니다.
+						<br/>
+						<br/>
+						COLOR: SKY BLUE, NAVY, GREY, GREEN, BLACK, ORANGE, WHITE, PURPLE, BEIGE
+						<br/>
+						<br/>
+						SIZE: M,L
+						<br/>
+						<br/>
+					</p>
+					<div class="selectbox">
+						<label for="ex-select">COLOR</label>&nbsp;&nbsp;
+						<select id="ex-select">
+							<option selected>SELECT</option>
+							<option>------</option>
+							<option>SKY BLUE</option>
+							<option>NAVY</option>
+							<option>GREY</option>
+							<option>GREEN</option>
+							<option>BLACK</option>
+							<option>ORANGE</option>
+							<option>WHITE</option>
+							<option>PURPLE</option>
+							<option>BEIGE</option>
+						</select>
+					</div>
+					<br/>
+					<br/>
+					<form name="select">
+						<div class="selectbox">
+							<label for="ex-select">SIZE</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<select id="ex-select" name="size">
+								<option selected>옵션을 선택해 주세요</option>
+								<option>------</option>
+								<option>M</option>
+								<option>L</option>
+							</select>
+						</div>
+						<br/>
+						<br/>
+						<form id='myform' method='POST' action='#'>
+							quantity &nbsp;&nbsp;&nbsp;
+							<input type='button' value='-' class='qtyminus' field='quantity' />
+							<input type='text' name='quantity' value='1' class='qty' />
+							<input type='button' value='+' class='qtyplus' field='quantity' />
+						</form>
+					</form>
+					<br/>
+					<br/>
+					<div class="button">
+						<input type="button" value="BUY NOW" class="buy" onclick="buy()"/>
+					</div>
+				</div>
+			</div>
+			<div class="image-main">
+				<img src="image/knit3-2.jpg" />
+				<img src="image/knit3-3.jpg" />
+				<img src="image/knit3-4.jpg" />
+				<img src="image/knit3-5.jpg" />
+			</div>
+		</div>
+	</body>
+</html>

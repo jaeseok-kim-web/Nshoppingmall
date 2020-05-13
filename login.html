@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>project</title>
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var sw = false;
+            // 클릭했을때 들어가고 나오는 것을 하기 위해 변수 선언
+            $('#image').click(function () {
+                if (sw == false) {
+                    $(this).next().animate({
+                        left: 2200
+                    }, 1000);
+                    sw = true;
+                } else {
+                    $(this).next().animate({
+                        left: -2000
+                    }, 1000);
+                    sw = false;
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: NanumGothic;
+            font-size: 30px;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 1000px;
+            margin: 0 auto;
+        }
+
+        #header {
+            width: 250px;
+            height: 1000px;
+            background-color: #fff;
+            position: fixed;
+            margin: 0 auto;
+        }
+
+        #logo img {
+            max-width: 300px;
+            height: auto;
+            margin: 35px;
+            cursor: pointer;
+        }
+
+        #middle {
+            width: 1300px;
+            height: 800px;
+            margin-left: 350px;
+            padding-top:300px;    
+        }
+        #middle h2{
+            text-align: center;
+        }
+        #middle .explain{
+            width:500px;
+            height:400px;
+            margin-left: 400px;
+            border: 1px solid #D2D2D2;          
+        }
+        #middle .login{
+            width:100%;
+            height:100%;
+            margin: 50px auto;
+        }
+        #middle .login-content{   
+            width:300px;
+            height:150px;     
+            margin: 50px auto;
+        }
+
+        #nav {
+            width: 110px;
+            position: fixed;
+            top: 500px;
+            margin: 0 70px;
+            z-index: 10;
+        }
+
+        #nav #image {
+            top: 400px;
+            margin: 10px auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        #menu {
+            margin-top: -130px;
+            height: 200px;
+            position: absolute;
+            left: 10%;
+            z-index: 10;
+        }
+
+        .main {
+            position: absolute;
+            z-index: 1;
+            left: -2000px;
+            width: 1300px;
+            height: 200px;
+            opacity: 0.8;
+            background: #fff;
+        }
+
+        #menu .main>li {
+            list-style: none;
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            position: relative;
+            padding: 0 10px;
+            left: 100px;
+            text-align: center;
+            z-index: 3;
+            font-size: 20px;
+        }
+
+        #menu .main>li a {
+            font-style: #000000;
+        }
+
+        #menu #submenu>li {
+            list-style: none;
+        }
+
+        #menu .main>li:hover #submenu {
+            z-index: 20;
+            display: block;
+        }
+
+        #menu .main>li a {
+            display: block;
+            width:160px;
+            color: #000;
+        }
+
+        #menu .main>li a:hover {
+            background: #138535;
+            color: #fff;
+            font-style: #000;
+        }
+
+        #menu .main #submenu {
+            position: absolute;
+            top: 30px;
+            width: 160px;
+            display: none;
+            margin-left: -35px;
+        }
+
+        #submenu li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <a href="index.html"><img src="image/jaeseok logo.jpg" alt="main로고" /></a>
+            </div>
+            <div id="nav">
+                <img id="image" src="image/menu.jpg" />
+                <div id="menu">
+                    <ul class="main">
+                        <li id="clothing mainmenu">
+                            <a href="#">CLOTHING</a>
+                            <ul id="submenu">
+                                <li>
+                                    <a href="new.html">NEW ARRIVAL</a>
+                                </li>
+                                <li>
+                                    <a href="outer.html">OUTER</a>
+                                </li>
+                                <li>
+                                    <a href="knit.html">KNIT</a>
+                                </li>
+                                <li>
+                                    <a href="shirt.html">SHIRT</a>
+                                </li>
+                                <li>
+                                    <a href="top.html">TOP</a>
+                                </li>
+                                <li>
+                                    <a href="bottom.html">BOTTOM</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="lookbook mainmenu">
+                            <a href="#">LOOKBOOK</a>
+                            <ul id="submenu">
+                                <li>
+                                    <a href="dailylook19FW.html">FW 19</a>
+                                </li>
+                                <li>
+                                    <a href="dailylook20SS.html">SS 20</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mypage mainmenu">
+                            <a href="mypage.html">MY PAGE</a>
+                        </li>
+                        <li id="submenu mainmenu">
+                            <a href="login.html">LOGIN</a>
+                            <ul id="submenu">
+                                <li>
+                                    <a href="join.html">JOIN</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="community mainmenu">
+                            <a href="community.html">COMMUNITY</a>
+                            <ul id="submenu">
+                                <li>
+                                    <a href="notice.html">notice</a>
+                                </li>
+                                <li>
+                                    <a href="faq.html">FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="middle">
+            
+            <div class="explain">
+                <div class="login">
+                    <h2>LOGIN</h2>
+                    <div class="login-content">
+                        <input type="text" class="form-control" name="id" placeholder="Username"><br/>
+                        <input type="password" class="form-control" name="password" placeholder="Password"><br/>
+                        <button type="submit" class="form-control btn btn-primary">login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
